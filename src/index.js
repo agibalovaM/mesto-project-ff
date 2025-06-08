@@ -1,3 +1,13 @@
+import 'core-js';
+import './pages/index.css';
+
+import logo from './images/logo.svg';
+document.querySelector('.logo').src = logo;
+import avatar from './images/avatar.jpg';
+document.querySelector('.profile__image').style.backgroundImage = `url(${avatar})`;
+import { initialCards } from './scripts/cards.js';
+
+
 // @todo: Темплейт карточки
 
 // @todo: DOM узлы
