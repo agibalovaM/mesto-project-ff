@@ -1,4 +1,4 @@
-export function createCard(cardData, deleteCardCallback, clickCardCallback) {
+export function createCard(cardData, onDelete, onLike, onClick) {
   const template = document.querySelector('#card-template').content;
   const cardElement = template.querySelector('.places__item').cloneNode(true);
 
@@ -11,9 +11,9 @@ export function createCard(cardData, deleteCardCallback, clickCardCallback) {
   cardImage.src = cardData.link;
   cardImage.alt = cardData.name;
 
-  deleteButton.addEventListener('click', () => deleteCardCallback(cardElement));
-  likeButton.addEventListener('click', () => likeButton.classList.toggle('card__like-button_is-active'));
-  cardImage.addEventListener('click', () => clickCardCallback(cardData.name, cardData.link));
+  deleteButton.addEventListener('click', () => onDelete(cardElement));
+  likeButton.addEventListener('click', () => onLike(likeButton));
+  cardImage.addEventListener('click', () => onClick(cardData.name, cardData.link));
 
   return cardElement;
 }

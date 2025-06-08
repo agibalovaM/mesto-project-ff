@@ -1,4 +1,3 @@
-import 'core-js';
 import './pages/index.css';
 
 import logo from './images/logo.svg';
@@ -12,7 +11,7 @@ import { openModal, closeModal } from './components/modal.js';
 
 const placesList = document.querySelector('.places__list');
 initialCards.forEach(function (item) {
-  const card = createCard(item, handleDelete, handleCardClick);
+  const card = createCard(item, handleDelete, handleLike, handleCardClick);
   placesList.append(card);
 });
 
@@ -27,9 +26,9 @@ const buttonAdd = document.querySelector('.profile__add-button');
 const closeButtons = document.querySelectorAll('.popup__close');
 const popups = document.querySelectorAll('.popup');
 
-const formElement = popupEdit.querySelector('.popup__form');
-const nameInput = formElement.querySelector('.popup__input_type_name');
-const jobInput = formElement.querySelector('.popup__input_type_description');
+const formEditProfile = popupEdit.querySelector('.popup__form');
+const nameInput = formEditProfile.querySelector('.popup__input_type_name');
+const jobInput = formEditProfile.querySelector('.popup__input_type_description');
 const profileName = document.querySelector('.profile__title');
 const profileDescription = document.querySelector('.profile__description');
 
@@ -45,12 +44,15 @@ buttonEdit.addEventListener('click', () => {
 
 buttonAdd.addEventListener('click', () => openModal(popupAdd));
 
-closeButtons.forEach(button => {
-  const popup = button.closest('.popup');
-  button.addEventListener('click', () => closeModal(popup));
-});
-
 popups.forEach(popup => {
+  const closeButton = popup.querySelector('.popup__close');
+
+  // Закрытие по крестику
+  if (closeButton) {
+    closeButton.addEventListener('click', () => closeModal(popup));
+  }
+
+  // Закрытие по оверлею
   popup.addEventListener('mousedown', (evt) => {
     if (evt.target === popup) {
       closeModal(popup);
@@ -58,14 +60,14 @@ popups.forEach(popup => {
   });
 });
 
-function handleFormSubmit(evt) {
+function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileDescription.textContent = jobInput.value;
   closeModal(popupEdit);
 }
 
-formElement.addEventListener('submit', handleFormSubmit);
+formEditProfile.addEventListener('submit', handleProfileFormSubmit);
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
@@ -73,7 +75,7 @@ function handleAddCardSubmit(evt) {
     name: placeNameInput.value,
     link: placeLinkInput.value
   };
-  const card = createCard(newCard, handleDelete, handleCardClick);
+  const card = createCard(newCard, handleDelete, handleLike, handleCardClick);
   placesList.prepend(card);
   formAddCard.reset();
   closeModal(popupAdd);
@@ -87,4 +89,9 @@ function handleCardClick(name, link) {
   popupCaption.textContent = name;
   openModal(popupImage);
 }
+
+function handleLike(likeButton) {
+  likeButton.classList.toggle('card__like-button_is-active');
+}
+
 
