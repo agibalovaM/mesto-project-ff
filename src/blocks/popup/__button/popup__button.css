@@ -14,6 +14,17 @@
   margin-top: 48px;
 }
 
+.popup__button_disabled {
+  background: #E5E5E5; 
+  color: #000000;
+  pointer-events: none;
+  opacity: 0.5; 
+}
+
+.popup_type_confirm-delete .popup__button {
+  margin-top: 0;
+}
+
 .popup__button:hover {
   background: rgba(0, 0, 0, 0.8);
   cursor: pointer;

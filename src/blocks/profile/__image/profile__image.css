@@ -1,22 +1,27 @@
 .profile__image {
   width: 120px;
   height: 120px;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
   border-radius: 50%;
   background-size: cover;
   background-position: center;
   margin: 0 29px 0 0;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
 }
 
-@media screen and (max-width: 740px) {
-  .profile__image {
-    margin: 0 10px 0 0;
-  }
+.profile__image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5) url('../../../images/edit-icon.svg') center center no-repeat;
+  background-size: 20px 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 50%;
 }
 
-@media screen and (max-width: 480px) {
-  .profile__image {
-    margin-right: 0;
-  }
+.profile__image:hover::after {
+  opacity: 1;
 }
+
