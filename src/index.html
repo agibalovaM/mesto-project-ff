@@ -38,7 +38,7 @@
       <div class="popup__content">
         <button type="button" class="popup__close"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <form class="popup__form" name="edit-profile">
+        <form class="popup__form" name="edit-profile" novalidate>
           <input type="text" name="name" id="name-input" class="popup__input popup__input_type_name" placeholder="Имя"
             required minlength="2" maxlength="40" pattern="^[a-zA-Zа-яА-ЯёЁ\s\-]+$"
             data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
@@ -58,7 +58,7 @@
       <div class="popup__content">
         <button type="button" class="popup__close"></button>
         <h3 class="popup__title">Новое место</h3>
-        <form class="popup__form" name="new-place">
+        <form class="popup__form" name="new-place" novalidate>
           <input type="text" name="place-name" id="description-input" class="popup__input popup__input_type_card-name"
             placeholder="Название" required minlength="2" maxlength="30" pattern="^[a-zA-Zа-яА-ЯёЁ\s\-]+$"
             data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
@@ -85,7 +85,7 @@
     <div class="popup__content">
       <button type="button" class="popup__close"></button>
       <h3 class="popup__title">Вы уверены?</h3>
-      <form class="popup__form popup__form_type_confirm" name="confirm-delete">
+      <form class="popup__form popup__form_type_confirm" name="confirm-delete" novalidate>
         <button type="submit" class="button popup__button">Да</button>
       </form>
     </div>
@@ -95,7 +95,7 @@
     <div class="popup__content">
       <button type="button" class="popup__close"></button>
       <h3 class="popup__title">Обновить аватар</h3>
-      <form class="popup__form" name="update-avatar">
+      <form class="popup__form" name="update-avatar" novalidate>
         <input type="url" name="avatar" id="avatar-link-input" class="popup__input popup__input_type_url"
           placeholder="Ссылка на аватар" required data-error-message="Введите корректный URL"
           data-required-message="Вы пропустили это поле." />
