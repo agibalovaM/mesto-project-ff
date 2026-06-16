@@ -17,11 +17,9 @@ export function createCard(cardData, onDelete, onLike, onClick, currentUserId) {
   cardImage.alt = cardData.name;
   likeCount.textContent = cardData.likes.length;
 
-// Устанавливаем лайк, если текущий пользователь уже лайкнул
 if (cardData.likes.some((user) => user._id === currentUserId)) {
   likeButton.classList.add('card__like-button_is-active');
 }
-  // Скрываем кнопку удаления, если карточка чужая
   if (cardData.owner._id !== currentUserId) {
     deleteButton.style.display = 'none';
   } else {
@@ -34,7 +32,6 @@ if (cardData.likes.some((user) => user._id === currentUserId)) {
   return cardElement;
 }
 
-// Обработка лайков карточки
 export function handleLike(likeButton, cardData, likeCount) {
   const isLiked = likeButton.classList.contains('card__like-button_is-active');
 

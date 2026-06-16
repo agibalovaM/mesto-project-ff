@@ -6,7 +6,6 @@ const config = {
   }
 };
 
-// универсальный обработчик ответа
 function getResponseData(res) {
   if (!res.ok) {
     return Promise.reject(`Ошибка: ${res.status}`);
